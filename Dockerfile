@@ -1,4 +1,4 @@
-FROM java:8
+FROM store/oracle/serverjre:8
 
 ADD ./build/libs/acs-0.0.1-SNAPSHOT.jar app.jar
 
