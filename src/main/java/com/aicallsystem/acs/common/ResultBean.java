@@ -17,7 +17,7 @@ public class ResultBean<T> {
     private static final long serialVersionUID = 1L;
 
     // true, false
-    private String status;
+    private boolean status;
 
     // 包含成功或失败信息
     private String description;

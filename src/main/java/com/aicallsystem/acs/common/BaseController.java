@@ -25,7 +25,7 @@ public class BaseController {
      */
     public ResponseEntity successResponse(Object object,String description){
 
-        ResultBean resultBean = new ResultBean("success", description, object);
+        ResultBean resultBean = new ResultBean(true, description, object);
         return new ResponseEntity(resultBean, HttpStatus.OK);
     }
 
@@ -40,7 +40,7 @@ public class BaseController {
      */
     public ResponseEntity failResponse(SysException sysException){
 
-        ResultBean resultBean = new ResultBean("fail", sysException.getMsg(), "");
+        ResultBean resultBean = new ResultBean(false, sysException.getMsg(), "");
         return new ResponseEntity(resultBean, HttpStatus.OK);
     }
 
