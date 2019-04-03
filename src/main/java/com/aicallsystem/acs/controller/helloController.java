@@ -1,4 +1,4 @@
-package com.aicallsystem.acs.common;
+package com.aicallsystem.acs.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
