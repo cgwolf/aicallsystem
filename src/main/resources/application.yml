@@ -2,3 +2,18 @@ server:
   port: 8888
   servlet:
       context-path: /acs
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.105.33.160:3306/aicallsystem?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: liu123456.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: aicallsystem
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*Mapper.xml
