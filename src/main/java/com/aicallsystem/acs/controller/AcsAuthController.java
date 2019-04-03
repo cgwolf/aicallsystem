@@ -32,7 +32,7 @@ public class AcsAuthController extends BaseController {
      * @throws
      * @since 4/3/2019
      */
-    @PostMapping("/auth")
+    @PostMapping("/userManage/login")
     @ApiOperation("用户身份验证接口")
     public ResponseEntity userAuth(@RequestBody AcsAccountInfo acsAccountInfo){
 
