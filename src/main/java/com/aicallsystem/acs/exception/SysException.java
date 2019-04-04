@@ -13,7 +13,11 @@ import lombok.Data;
 @Data
 public class SysException extends RuntimeException{
 
-    private final String code;
+    private final String description;
 
-    private final String msg;
+    public SysException (SysExceptionEnum sysExceptionEnum) {
+
+        this.description = sysExceptionEnum.getDescription();
+
+    }
 }

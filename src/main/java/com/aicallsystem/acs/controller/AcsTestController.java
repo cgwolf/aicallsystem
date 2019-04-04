@@ -1,5 +1,6 @@
 package com.aicallsystem.acs.controller;
 
+import com.aicallsystem.acs.common.ResultBean;
 import com.aicallsystem.acs.entity.AcsTest;
 import com.aicallsystem.acs.service.IAcsTestService;
 import com.github.pagehelper.PageHelper;
@@ -38,7 +39,7 @@ public class AcsTestController extends BaseController {
      */
     @ApiOperation(value = "测试类列表")
     @PostMapping("/listTest")
-    public ResponseEntity listTest(){
+    public ResultBean listTest(){
 
         PageHelper.startPage(1 ,10);
 

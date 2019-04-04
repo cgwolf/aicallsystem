@@ -1,12 +1,10 @@
 package com.aicallsystem.acs.common;
 
 import com.aicallsystem.acs.exception.SysException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 /**
  * <p>
- *      基础controller配置
+ *      controller基础配置
  * </p>
  * @author ispong
  * @since 4/3/2019
@@ -18,30 +16,25 @@ public class BaseController {
      * <p>
      *      成功返回
      * </p>
-     * @param
-     * @return
-     * @throws
+     * @param object 数据对象
+     * @param description 返回描述
      * @since 4/3/2019
      */
-    public ResponseEntity successResponse(Object object,String description){
+    public ResultBean successResponse(Object object,String description){
 
-        ResultBean resultBean = new ResultBean(true, description, object);
-        return new ResponseEntity(resultBean, HttpStatus.OK);
+        return new ResultBean(true, description, object);
     }
 
     /**
      * <p>
      *     失败返回
      * </p>
-     * @param
-     * @return
-     * @throws
+     * @param sysException 系统异常对象
      * @since 4/3/2019
      */
-    public ResponseEntity failResponse(SysException sysException){
+    public ResultBean failResponse(SysException sysException){
 
-        ResultBean resultBean = new ResultBean(false, sysException.getMsg(), "");
-        return new ResponseEntity(resultBean, HttpStatus.OK);
+        return new ResultBean(false, sysException.getDescription(), "");
     }
 
 

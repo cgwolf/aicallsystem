@@ -55,7 +55,8 @@ public class AcsContactInfoController extends BaseController {
         map.put("contactInfos",contactInfos);
         map.put("total", total);
 
-        return successResponse(map,"获取联系信息列表成功");
+//        return successResponse(map,"获取联系信息列表成功");
+        return null;
     }
 
 }

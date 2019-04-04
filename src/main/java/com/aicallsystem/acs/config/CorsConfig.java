@@ -1,35 +1,33 @@
 package com.aicallsystem.acs.config;
 
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- *  @Copyright: Shanghai Definesys Company.All rights reserved.
- *  @Description: 全局跨域
- *  @author: ispong
- *  @since: 2/27/2019 16:12
- *  @history:
- *          1.2/27/2019 created by ispong
+ * <p>
+ *      跨域配置
+ * </p>
+ * @author ispong
+ * @since 4/4/2019
+ * @version 1.0.0
  */
 @Configuration
-public class CorsConfig {
+@EnableWebMvc
+public class CorsConfig implements WebMvcConfigurer {
 
-    @Bean
-    public FilterRegistrationBean corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-        bean.setOrder(0);
-        return bean;
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+
+        registry.addMapping("/acs/**")
+                .allowedMethods("*")
+                .allowedHeaders("*")
+                .allowedOrigins("*")
+                .allowCredentials(true).maxAge(3600);
+
     }
+
+
 
 }

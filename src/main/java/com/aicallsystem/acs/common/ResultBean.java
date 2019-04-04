@@ -1,5 +1,6 @@
 package com.aicallsystem.acs.common;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -16,13 +17,13 @@ public class ResultBean<T> {
 
     private static final long serialVersionUID = 1L;
 
-    // true, false
+    @ApiModelProperty("返回状态  ture为成功/false为失败")
     private boolean status;
 
-    // 包含成功或失败信息
+    @ApiModelProperty("包含成功或失败信息")
     private String description;
 
-    // 详细数
+    @ApiModelProperty("返回数据对象")
     private T data;
 
 }
