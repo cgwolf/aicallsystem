@@ -38,7 +38,7 @@ public class AcsTestController extends BaseController {
      * @since 4/3/2019
      */
     @ApiOperation(value = "测试类列表")
-    @PostMapping("/listTest")
+    @GetMapping("/listTest")
     public ResultBean listTest(){
 
         PageHelper.startPage(1 ,10);
