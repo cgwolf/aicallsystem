@@ -47,32 +47,32 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    @Autowired
-    private TypeResolver typeResolver;
+//    @Autowired
+//    private TypeResolver typeResolver;
 
-    private ApiKey apiKey() {
+//    private ApiKey apiKey() {
 //        return new ApiKey("mykey", "api_key", "header");
-        return new ApiKey("Authorization", "Authorization", "header");
-    }
+//        return new ApiKey("Authorization", "Authorization", "header");
+//    }
 
-    List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope
-                = new AuthorizationScope("global", "accessEverything");
-        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-        authorizationScopes[0] = authorizationScope;
-        return newArrayList(
+//    List<SecurityReference> defaultAuth() {
+//        AuthorizationScope authorizationScope
+//                = new AuthorizationScope("global", "accessEverything");
+//        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+//        authorizationScopes[0] = authorizationScope;
+//        return newArrayList(
 //                new SecurityReference("mykey", authorizationScopes)
-                new SecurityReference("Authorization", authorizationScopes)
-        );
-    }
+//                new SecurityReference("Authorization", authorizationScopes)
+//        );
+//    }
 
-    private SecurityContext securityContext() {
-        return SecurityContext.builder()
-                .securityReferences(defaultAuth())
+//    private SecurityContext securityContext() {
+//        return SecurityContext.builder()
+//                .securityReferences(defaultAuth())
 //                .forPaths(PathSelectors.regex("/anyPath.*"))
-                .forPaths(PathSelectors.regex("^(?!auth).*$"))
-                .build();
-    }
+//                .forPaths(PathSelectors.regex("^(?!auth).*$"))
+//                .build();
+//    }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
@@ -91,25 +91,25 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 //                .apis(RequestHandlerSelectors.any())
                 .apis(RequestHandlerSelectors.basePackage("com.aicallsystem.acs.controller"))
 //                .paths(PathSelectors.any())
-                .paths(PathSelectors.regex("^(?!auth).*$"))
+//                .paths(PathSelectors.regex("^(?!auth).*$"))
                 .build()
-                .pathMapping("/")
-                .directModelSubstitute(LocalDate.class, String.class)
-                .genericModelSubstitutes(ResponseEntity.class)
-                .alternateTypeRules(
-                        newRule(typeResolver.resolve(DeferredResult.class,
-                                typeResolver.resolve(ResponseEntity.class, WildcardType.class)),
-                                typeResolver.resolve(WildcardType.class)))
-                .useDefaultResponseMessages(false)
-                .globalResponseMessage(RequestMethod.GET,
-                        newArrayList(new ResponseMessageBuilder()
-                                .code(500)
-                                .message("500 message")
-                                .responseModel(new ModelRef("Error"))
-                                .build()))
-                .securitySchemes(newArrayList(apiKey()))
-                .securityContexts(newArrayList(securityContext()))
-                .enableUrlTemplating(true)
+//                .pathMapping("/")
+//                .directModelSubstitute(LocalDate.class, String.class)
+//                .genericModelSubstitutes(ResponseEntity.class)
+//                .alternateTypeRules(
+//                        newRule(typeResolver.resolve(DeferredResult.class,
+//                                typeResolver.resolve(ResponseEntity.class, WildcardType.class)),
+//                                typeResolver.resolve(WildcardType.class)))
+//                .useDefaultResponseMessages(false)
+//                .globalResponseMessage(RequestMethod.GET,
+//                        newArrayList(new ResponseMessageBuilder()
+//                                .code(500)
+//                                .message("500 message")
+//                                .responseModel(new ModelRef("Error"))
+//                                .build()))
+//                .securitySchemes(newArrayList(apiKey()))
+//                .securityContexts(newArrayList(securityContext()))
+//                .enableUrlTemplating(true)
 //                .globalOperationParameters(
 //                        newArrayList(new ParameterBuilder()
 //                                .name("someGlobalParameter")
@@ -123,38 +123,38 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 ;
     }
 
-    @Bean
-    SecurityConfiguration security() {
-        return SecurityConfigurationBuilder.builder()
-                .clientId("test-app-client-id")
-                .clientSecret("test-app-client-secret")
-                .realm("test-app-realm")
-                .appName("test-app")
-                .scopeSeparator(",")
-                .additionalQueryStringParams(null)
-                .useBasicAuthenticationWithAccessCodeGrant(false)
-                .build();
-    }
+//    @Bean
+//    SecurityConfiguration security() {
+//        return SecurityConfigurationBuilder.builder()
+//                .clientId("test-app-client-id")
+//                .clientSecret("test-app-client-secret")
+//                .realm("test-app-realm")
+//                .appName("test-app")
+//                .scopeSeparator(",")
+//                .additionalQueryStringParams(null)
+//                .useBasicAuthenticationWithAccessCodeGrant(false)
+//                .build();
+//    }
 
-    @Bean
-    UiConfiguration uiConfig() {
-        return UiConfigurationBuilder
-                .builder()
-                .deepLinking(true)
-                .displayOperationId(false)
-                .defaultModelsExpandDepth(1)
-                .defaultModelExpandDepth(1)
-                .defaultModelRendering(ModelRendering.EXAMPLE)
-                .displayRequestDuration(false)
-                .docExpansion(DocExpansion.NONE)
-                .filter(false)
-                .maxDisplayedTags(null)
-                .operationsSorter(OperationsSorter.ALPHA)
-                .showExtensions(false)
-                .tagsSorter(TagsSorter.ALPHA)
-                .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
-                .validatorUrl(null)
-                .build();
-    }
+//    @Bean
+//    UiConfiguration uiConfig() {
+//        return UiConfigurationBuilder
+//                .builder()
+//                .deepLinking(true)
+//                .displayOperationId(false)
+//                .defaultModelsExpandDepth(1)
+//                .defaultModelExpandDepth(1)
+//                .defaultModelRendering(ModelRendering.EXAMPLE)
+//                .displayRequestDuration(false)
+//                .docExpansion(DocExpansion.NONE)
+//                .filter(false)
+//                .maxDisplayedTags(null)
+//                .operationsSorter(OperationsSorter.ALPHA)
+//                .showExtensions(false)
+//                .tagsSorter(TagsSorter.ALPHA)
+//                .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
+//                .validatorUrl(null)
+//                .build();
+//    }
 
 }

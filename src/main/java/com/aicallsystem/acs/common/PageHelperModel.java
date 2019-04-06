@@ -11,7 +11,7 @@ import lombok.Data;
  * @version 1.0.0
  */
 @Data
-public class PageHelper {
+public class PageHelperModel {
 
     private int page;
 

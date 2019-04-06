@@ -1,9 +1,10 @@
 package com.aicallsystem.acs.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 /**
  * <p>
@@ -14,20 +15,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @version 1.0.0
  */
 @Configuration
-@EnableWebMvc
-public class CorsConfig implements WebMvcConfigurer {
+public class CorsConfig {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-
-        registry.addMapping("/acs/**")
-                .allowedMethods("*")
-                .allowedHeaders("*")
-                .allowedOrigins("*")
-                .allowCredentials(true).maxAge(3600);
-
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
-
-
 
 }

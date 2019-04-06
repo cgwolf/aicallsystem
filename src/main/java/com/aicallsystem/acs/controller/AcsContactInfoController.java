@@ -1,13 +1,16 @@
 package com.aicallsystem.acs.controller;
 
 
-import com.aicallsystem.acs.common.PageHelper;
+import com.aicallsystem.acs.common.PageHelperModel;
+import com.aicallsystem.acs.common.ResultBean;
 import com.aicallsystem.acs.entity.AcsContactInfo;
-import com.aicallsystem.acs.entity.AcsTest;
 import com.aicallsystem.acs.service.IAcsContactInfoService;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,9 +21,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.beans.BeanUtils.copyProperties;
+
 /**
  * <p>
- * 联系我们信息 前端控制器
+ *      联系我们信息 前端控制器
  * </p>
  *
  * @author ispong
@@ -28,6 +33,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/contact")
+@Api(tags = "联系信息 API")
 public class AcsContactInfoController extends BaseController {
 
     @Autowired
@@ -37,17 +43,17 @@ public class AcsContactInfoController extends BaseController {
      * <p>
      *      查询联系信息
      * </p>
-     * @param pageHelper
+     * @param pageHelperModel
      * @since 4/3/2019
      */
-    public ResponseEntity listContact(@RequestBody PageHelper pageHelper){
+    @PostMapping("/listContact")
+    @ApiOperation("查询联系信息")
+    public ResultBean<AcsContactInfo> listContact(@RequestBody PageHelperModel pageHelperModel){
 
-
-        com.github.pagehelper.PageHelper.startPage(pageHelper.getPage() ,pageHelper.getSize());
-
+        PageHelper.startPage(pageHelperModel.getPage() , pageHelperModel.getSize());
         List<AcsContactInfo> listContact = iAcsContactInfoService.list();
-
         PageInfo<AcsContactInfo> listContactPageInfo= new PageInfo(listContact);
+
         List<AcsContactInfo> contactInfos = listContactPageInfo.getList();
         long total = listContactPageInfo.getTotal();
 
@@ -55,8 +61,9 @@ public class AcsContactInfoController extends BaseController {
         map.put("contactInfos",contactInfos);
         map.put("total", total);
 
-//        return successResponse(map,"获取联系信息列表成功");
-        return null;
+//        copyProperties();
+
+        return successResponse(map,"获取联系信息列表成功");
     }
 
 }
