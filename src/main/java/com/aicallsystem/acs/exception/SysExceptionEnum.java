@@ -16,6 +16,11 @@ import lombok.Setter;
 public enum SysExceptionEnum {
 
     /**
+     *  添加联系方式失败
+     */
+    ADD_CONTACT_ERROR("添加联系方式失败"),
+
+    /**
      *  身份验证失败
      */
     AUTH_ERROR("身份验证失败");

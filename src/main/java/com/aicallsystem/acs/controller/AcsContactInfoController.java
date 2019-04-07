@@ -4,6 +4,10 @@ package com.aicallsystem.acs.controller;
 import com.aicallsystem.acs.common.PageHelperModel;
 import com.aicallsystem.acs.common.ResultBean;
 import com.aicallsystem.acs.entity.AcsContactInfo;
+import com.aicallsystem.acs.entity.VO.AddContactVO;
+import com.aicallsystem.acs.entity.VO.ListContactVO;
+import com.aicallsystem.acs.exception.SysException;
+import com.aicallsystem.acs.exception.SysExceptionEnum;
 import com.aicallsystem.acs.service.IAcsContactInfoService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -17,9 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.aicallsystem.acs.common.BaseController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.springframework.beans.BeanUtils.copyProperties;
 
@@ -48,7 +50,7 @@ public class AcsContactInfoController extends BaseController {
      */
     @PostMapping("/listContact")
     @ApiOperation("查询联系信息")
-    public ResultBean<AcsContactInfo> listContact(@RequestBody PageHelperModel pageHelperModel){
+    public ResultBean<ListContactVO> listContact(@RequestBody PageHelperModel pageHelperModel){
 
         PageHelper.startPage(pageHelperModel.getPage() , pageHelperModel.getSize());
         List<AcsContactInfo> listContact = iAcsContactInfoService.list();
@@ -57,13 +59,45 @@ public class AcsContactInfoController extends BaseController {
         List<AcsContactInfo> contactInfos = listContactPageInfo.getList();
         long total = listContactPageInfo.getTotal();
 
-        Map map = new HashMap(2);
-        map.put("contactInfos",contactInfos);
-        map.put("total", total);
+        ListContactVO listContactVO = new ListContactVO();
 
-//        copyProperties();
+        listContactVO.setAcsContactInfos(contactInfos);
+        listContactVO.setTotal(total);
 
-        return successResponse(map,"获取联系信息列表成功");
+        return successResponse(listContactVO,"获取联系信息列表成功");
     }
+
+
+    /**
+     * <p>
+     *      添加联系方式
+     * </p>
+     * @param addContactVO 联系方式对象
+     * @since 4/3/2019
+     */
+    @PostMapping("/addContact")
+    @ApiOperation("添加联系信息")
+    public ResultBean addContact(@RequestBody AddContactVO addContactVO){
+
+        AcsContactInfo acsContactInfo = new AcsContactInfo();
+        try{
+            copyProperties(addContactVO,acsContactInfo);
+            iAcsContactInfoService.save(acsContactInfo);
+        }catch (Exception e){
+            e.printStackTrace();
+            return failResponse(new SysException(SysExceptionEnum.ADD_CONTACT_ERROR));
+        }
+
+        return successResponse("","添加联系方式成功");
+    }
+
+
+
+
+
+
+
+
+
 
 }

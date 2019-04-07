@@ -1,5 +1,6 @@
 package com.aicallsystem.acs.common;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -13,7 +14,9 @@ import lombok.Data;
 @Data
 public class PageHelperModel {
 
+    @ApiModelProperty("分页页数")
     private int page;
 
+    @ApiModelProperty("分页每页个数")
     private int size;
 }

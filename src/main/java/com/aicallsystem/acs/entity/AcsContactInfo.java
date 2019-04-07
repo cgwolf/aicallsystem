@@ -2,6 +2,7 @@ package com.aicallsystem.acs.entity;
 
 import java.time.LocalDateTime;
 import com.aicallsystem.acs.common.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class AcsContactInfo extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
 
     @ApiModelProperty(value = "客户姓名")
