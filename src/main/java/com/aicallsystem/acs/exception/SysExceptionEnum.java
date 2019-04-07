@@ -16,6 +16,11 @@ import lombok.Setter;
 public enum SysExceptionEnum {
 
     /**
+     *  删除联系方式失败
+     */
+    DELETE_CONTACT_ERROR("删除联系方式失败"),
+
+    /**
      *  添加联系方式失败
      */
     ADD_CONTACT_ERROR("添加联系方式失败"),

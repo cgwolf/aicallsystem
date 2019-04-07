@@ -18,4 +18,6 @@ import org.springframework.stereotype.Component;
 public interface AcsContactInfoMapper extends BaseMapper<AcsContactInfo> {
 
     void addContact(AcsContactInfo acsContactInfo);
+
+    void deleteContact(AcsContactInfo acsContactInfo);
 }

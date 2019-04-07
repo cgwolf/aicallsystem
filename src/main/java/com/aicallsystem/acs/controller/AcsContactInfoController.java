@@ -5,6 +5,7 @@ import com.aicallsystem.acs.common.PageHelperModel;
 import com.aicallsystem.acs.common.ResultBean;
 import com.aicallsystem.acs.entity.AcsContactInfo;
 import com.aicallsystem.acs.entity.VO.AddContactVO;
+import com.aicallsystem.acs.entity.VO.DeleteContactVO;
 import com.aicallsystem.acs.entity.VO.ListContactVO;
 import com.aicallsystem.acs.exception.SysException;
 import com.aicallsystem.acs.exception.SysExceptionEnum;
@@ -91,6 +92,28 @@ public class AcsContactInfoController extends BaseController {
         return successResponse("","添加联系方式成功");
     }
 
+    /**
+     * <p>
+     *      删除联系方式
+     * </p>
+     * @param deleteContactVO 联系方式id
+     * @since 4/3/2019
+     */
+    @PostMapping("/deleteContact")
+    @ApiOperation("删除联系信息")
+    public ResultBean deleteContact(@RequestBody DeleteContactVO deleteContactVO){
+
+        AcsContactInfo acsContactInfo = new AcsContactInfo();
+        try{
+            copyProperties(deleteContactVO,acsContactInfo);
+            iAcsContactInfoService.deleteContact(acsContactInfo);
+        }catch (Exception e){
+            e.printStackTrace();
+            return failResponse(new SysException(SysExceptionEnum.DELETE_CONTACT_ERROR));
+        }
+
+        return successResponse("","删除联系方式成功");
+    }
 
 
 

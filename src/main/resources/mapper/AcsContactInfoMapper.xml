@@ -19,4 +19,9 @@
       )
 
     </insert>
+
+    <delete id="deleteContact" parameterType="com.aicallsystem.acs.entity.AcsContactInfo">
+      delete from acs_contact_info
+      where id=#{id}
+    </delete>
 </mapper>

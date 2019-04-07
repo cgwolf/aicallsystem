@@ -15,4 +15,6 @@ public interface IAcsContactInfoService extends IService<AcsContactInfo> {
 
     void addContact(AcsContactInfo acsContactInfo);
 
+    void deleteContact(AcsContactInfo acsContactInfo);
+
 }

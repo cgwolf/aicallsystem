@@ -25,4 +25,9 @@ public class AcsContactInfoServiceImpl extends ServiceImpl<AcsContactInfoMapper,
     public void addContact(AcsContactInfo acsContactInfo) {
         acsContactInfoMapper.addContact(acsContactInfo);
     }
+
+    @Override
+    public void deleteContact(AcsContactInfo acsContactInfo) {
+        acsContactInfoMapper.deleteContact(acsContactInfo);
+    }
 }
