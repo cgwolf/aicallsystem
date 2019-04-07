@@ -82,7 +82,7 @@ public class AcsContactInfoController extends BaseController {
         AcsContactInfo acsContactInfo = new AcsContactInfo();
         try{
             copyProperties(addContactVO,acsContactInfo);
-            iAcsContactInfoService.save(acsContactInfo);
+            iAcsContactInfoService.addContact(acsContactInfo);
         }catch (Exception e){
             e.printStackTrace();
             return failResponse(new SysException(SysExceptionEnum.ADD_CONTACT_ERROR));

@@ -4,6 +4,7 @@ import com.aicallsystem.acs.entity.AcsContactInfo;
 import com.aicallsystem.acs.mapper.AcsContactInfoMapper;
 import com.aicallsystem.acs.service.IAcsContactInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +18,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AcsContactInfoServiceImpl extends ServiceImpl<AcsContactInfoMapper, AcsContactInfo> implements IAcsContactInfoService {
 
+    @Autowired
+    private AcsContactInfoMapper acsContactInfoMapper;
+
+    @Override
+    public void addContact(AcsContactInfo acsContactInfo) {
+        acsContactInfoMapper.addContact(acsContactInfo);
+    }
 }

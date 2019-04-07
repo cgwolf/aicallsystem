@@ -3,6 +3,7 @@ package com.aicallsystem.acs.mapper;
 import com.aicallsystem.acs.entity.AcsContactInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -13,6 +14,8 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2019-04-03
  */
 @Mapper
+@Component
 public interface AcsContactInfoMapper extends BaseMapper<AcsContactInfo> {
 
+    void addContact(AcsContactInfo acsContactInfo);
 }

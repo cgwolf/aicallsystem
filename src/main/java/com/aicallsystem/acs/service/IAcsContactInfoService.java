@@ -13,6 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IAcsContactInfoService extends IService<AcsContactInfo> {
 
-
+    void addContact(AcsContactInfo acsContactInfo);
 
 }
