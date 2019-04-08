@@ -1,11 +1,14 @@
 package com.aicallsystem.acs.service.impl;
 
+import com.aicallsystem.acs.common.PageHelperModel;
 import com.aicallsystem.acs.entity.AcsContactInfo;
 import com.aicallsystem.acs.mapper.AcsContactInfoMapper;
 import com.aicallsystem.acs.service.IAcsContactInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -20,6 +23,11 @@ public class AcsContactInfoServiceImpl extends ServiceImpl<AcsContactInfoMapper,
 
     @Autowired
     private AcsContactInfoMapper acsContactInfoMapper;
+
+    @Override
+    public List<AcsContactInfo> listContact(PageHelperModel pageHelperModel) {
+        return acsContactInfoMapper.listContact(pageHelperModel);
+    }
 
     @Override
     public void addContact(AcsContactInfo acsContactInfo) {

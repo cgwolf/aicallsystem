@@ -4,7 +4,6 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
@@ -19,29 +18,22 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class CorsConfig {
 
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.addAllowedOrigin("*");
-//        configuration.addAllowedMethod("*");
-//        configuration.addAllowedHeader("*");
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
-
+    /**
+     * <p>
+     *     配置跨域过滤器
+     * </p>
+     * @since 4/8/2019
+     */
     @Bean
-    public FilterRegistrationBean corsFilter() {
+    public FilterRegistrationBean corsFilter(){
+
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-        bean.setOrder(0);
-        return bean;
+        source.registerCorsConfiguration("/**", configuration);
+        return new FilterRegistrationBean(new CorsFilter(source));
     }
 
 }

@@ -19,4 +19,10 @@ public class PageHelperModel {
 
     @ApiModelProperty("分页每页个数")
     private int size;
+
+    @ApiModelProperty("分页排序条件 传递字段名")
+    private String orderValue;
+
+    @ApiModelProperty("分页排序方式 acs为增序/desc为降序")
+    private String orderType;
 }

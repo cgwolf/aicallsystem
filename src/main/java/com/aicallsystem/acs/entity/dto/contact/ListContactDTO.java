@@ -1,4 +1,4 @@
-package com.aicallsystem.acs.entity.VO;
+package com.aicallsystem.acs.entity.dto.contact;
 
 import com.aicallsystem.acs.entity.AcsContactInfo;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,7 +15,7 @@ import java.util.List;
  * @version 1.0.0
  */
 @Data
-public class ListContactVO {
+public class ListContactDTO {
 
     @ApiModelProperty("联系方式列表")
     private List<AcsContactInfo> acsContactInfos;

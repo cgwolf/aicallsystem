@@ -4,9 +4,9 @@ package com.aicallsystem.acs.controller;
 import com.aicallsystem.acs.common.PageHelperModel;
 import com.aicallsystem.acs.common.ResultBean;
 import com.aicallsystem.acs.entity.AcsContactInfo;
-import com.aicallsystem.acs.entity.VO.AddContactVO;
-import com.aicallsystem.acs.entity.VO.DeleteContactVO;
-import com.aicallsystem.acs.entity.VO.ListContactVO;
+import com.aicallsystem.acs.entity.dto.contact.AddContactDTO;
+import com.aicallsystem.acs.entity.dto.contact.MarkContactDTO;
+import com.aicallsystem.acs.entity.dto.contact.ListContactDTO;
 import com.aicallsystem.acs.exception.SysException;
 import com.aicallsystem.acs.exception.SysExceptionEnum;
 import com.aicallsystem.acs.service.IAcsContactInfoService;
@@ -51,21 +51,20 @@ public class AcsContactInfoController extends BaseController {
      */
     @PostMapping("/listContact")
     @ApiOperation("查询联系信息")
-    public ResultBean<ListContactVO> listContact(@RequestBody PageHelperModel pageHelperModel){
+    public ResultBean<ListContactDTO> listContact(@RequestBody PageHelperModel pageHelperModel){
 
         PageHelper.startPage(pageHelperModel.getPage() , pageHelperModel.getSize());
-        List<AcsContactInfo> listContact = iAcsContactInfoService.list();
+        List<AcsContactInfo> listContact = iAcsContactInfoService.listContact(pageHelperModel);
         PageInfo<AcsContactInfo> listContactPageInfo= new PageInfo(listContact);
 
         List<AcsContactInfo> contactInfos = listContactPageInfo.getList();
         long total = listContactPageInfo.getTotal();
 
-        ListContactVO listContactVO = new ListContactVO();
+        ListContactDTO listContactDTO = new ListContactDTO();
+        listContactDTO.setAcsContactInfos(contactInfos);
+        listContactDTO.setTotal(total);
 
-        listContactVO.setAcsContactInfos(contactInfos);
-        listContactVO.setTotal(total);
-
-        return successResponse(listContactVO,"获取联系信息列表成功");
+        return successResponse(listContactDTO,"获取联系信息列表成功");
     }
 
 
@@ -73,16 +72,16 @@ public class AcsContactInfoController extends BaseController {
      * <p>
      *      添加联系方式
      * </p>
-     * @param addContactVO 联系方式对象
+     * @param addContactDTO 联系方式对象
      * @since 4/3/2019
      */
     @PostMapping("/addContact")
     @ApiOperation("添加联系信息")
-    public ResultBean addContact(@RequestBody AddContactVO addContactVO){
+    public ResultBean addContact(@RequestBody AddContactDTO addContactDTO){
 
         AcsContactInfo acsContactInfo = new AcsContactInfo();
         try{
-            copyProperties(addContactVO,acsContactInfo);
+            copyProperties(addContactDTO,acsContactInfo);
             iAcsContactInfoService.addContact(acsContactInfo);
         }catch (Exception e){
             e.printStackTrace();
@@ -96,17 +95,19 @@ public class AcsContactInfoController extends BaseController {
      * <p>
      *      删除联系方式
      * </p>
-     * @param deleteContactVO 联系方式id
+     * @param markContactDTOList 联系方式id
      * @since 4/3/2019
      */
     @PostMapping("/deleteContact")
     @ApiOperation("删除联系信息")
-    public ResultBean deleteContact(@RequestBody DeleteContactVO deleteContactVO){
+    public ResultBean deleteContact(@RequestBody List<MarkContactDTO> markContactDTOList){
 
         AcsContactInfo acsContactInfo = new AcsContactInfo();
         try{
-            copyProperties(deleteContactVO,acsContactInfo);
-            iAcsContactInfoService.deleteContact(acsContactInfo);
+            for(MarkContactDTO markContactDTO: markContactDTOList){
+                copyProperties(markContactDTO,acsContactInfo);
+                iAcsContactInfoService.deleteContact(acsContactInfo);
+            }
         }catch (Exception e){
             e.printStackTrace();
             return failResponse(new SysException(SysExceptionEnum.DELETE_CONTACT_ERROR));
@@ -120,17 +121,19 @@ public class AcsContactInfoController extends BaseController {
      * <p>
      *      更新联系方式状态
      * </p>
-     * @param deleteContactVO 联系方式id
+     * @param markContactDTOList 联系方式id
      * @since 4/3/2019
      */
     @PostMapping("/updateContactState")
     @ApiOperation("更新联系方式状态")
-    public ResultBean updateContactState(@RequestBody DeleteContactVO deleteContactVO){
+    public ResultBean updateContactState(@RequestBody List<MarkContactDTO> markContactDTOList){
 
         AcsContactInfo acsContactInfo = new AcsContactInfo();
         try{
-            copyProperties(deleteContactVO,acsContactInfo);
-            iAcsContactInfoService.updateContactState(acsContactInfo);
+            for(MarkContactDTO markContactDTO:markContactDTOList){
+                copyProperties(markContactDTO,acsContactInfo);
+                iAcsContactInfoService.updateContactState(acsContactInfo);
+            }
         }catch (Exception e){
             e.printStackTrace();
             return failResponse(new SysException(SysExceptionEnum.DELETE_CONTACT_ERROR));

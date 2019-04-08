@@ -1,9 +1,12 @@
 package com.aicallsystem.acs.mapper;
 
+import com.aicallsystem.acs.common.PageHelperModel;
 import com.aicallsystem.acs.entity.AcsContactInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * <p>
@@ -22,4 +25,6 @@ public interface AcsContactInfoMapper extends BaseMapper<AcsContactInfo> {
     void deleteContact(AcsContactInfo acsContactInfo);
 
     void updateContactState(AcsContactInfo acsContactInfo);
+
+    List<AcsContactInfo> listContact(PageHelperModel pageHelperModel);
 }

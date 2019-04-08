@@ -1,4 +1,4 @@
-package com.aicallsystem.acs.entity.VO;
+package com.aicallsystem.acs.entity.dto.contact;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -12,8 +12,8 @@ import lombok.Data;
  * @version 1.0.0
  */
 @Data
-public class DeleteContactVO {
+public class MarkContactDTO {
 
     @ApiModelProperty("联系方式id")
-    private int id;
+    private Integer id;
 }

@@ -1,7 +1,10 @@
 package com.aicallsystem.acs.service;
 
+import com.aicallsystem.acs.common.PageHelperModel;
 import com.aicallsystem.acs.entity.AcsContactInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,6 +15,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-04-03
  */
 public interface IAcsContactInfoService extends IService<AcsContactInfo> {
+
+    List<AcsContactInfo> listContact(PageHelperModel pageHelperModel);
 
     void addContact(AcsContactInfo acsContactInfo);
 
