@@ -1,5 +1,6 @@
 package com.aicallsystem.acs.entity.dto.contact;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -12,6 +13,7 @@ import lombok.Data;
  * @version 1.0.0
  */
 @Data
+@ApiModel(description="标记联系对象")
 public class MarkContactDTO {
 
     @ApiModelProperty("联系方式id")

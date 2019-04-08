@@ -13,7 +13,7 @@ import lombok.Data;
  * @version 1.0.0
  */
 @Data
-@ApiModel(value="AcsContactInfo对象", description="联系我们信息")
+@ApiModel( description="联系我们信息")
 public class AcsAccountInfo {
 
     @ApiModelProperty(value = "用户姓名")

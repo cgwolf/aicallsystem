@@ -2,44 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aicallsystem.acs.mapper.AcsContactInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.aicallsystem.acs.entity.AcsContactInfo" >
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="phone" property="phone" jdbcType="VARCHAR" />
-        <result column="email" property="email" jdbcType="VARCHAR" />
-        <result column="state" property="state" jdbcType="INTEGER" />
-        <result column="remark" property="remark" jdbcType="VARCHAR" />
-        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    </resultMap>
-
     <sql id="Base_Column_List" >
         id id, name name, phone phone, email email, state state, remark remark, create_Date createDate
     </sql>
 
     <insert id="addContact" parameterType="com.aicallsystem.acs.entity.AcsContactInfo">
 
-      insert into acs_contact_info
-      (
+      insert into acs_contact_info(
         name,
         phone,
         email,
         remark
-      ) values (
-        #{name},
-        #{phone},
-        #{email},
-        #{remark}
+      )values (
+        #{name,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR}
       )
 
     </insert>
 
     <delete id="deleteContact" parameterType="com.aicallsystem.acs.entity.AcsContactInfo">
       delete from acs_contact_info
-      where id=#{id}
+      where id=#{id,jdbcType=INTEGER}
     </delete>
 
     <update id="updateContactState" parameterType="com.aicallsystem.acs.entity.AcsContactInfo">
-        update acs_contact_info set state= "1" where id=#{id}
+        update acs_contact_info set state= "1" where id=#{id,jdbcType=INTEGER}
     </update>
 
     <select id="listContact" parameterType="com.aicallsystem.acs.common.PageHelperModel" resultType="com.aicallsystem.acs.entity.AcsContactInfo">
@@ -48,7 +37,7 @@
       from acs_contact_info
       <if test="orderValue != null and orderValue !=''
                 or orderType !=null and orderType !=''">
-        order by ${orderValue} ${orderType}
+        order by ${orderValue,jdbcType=VARCHAR} ${orderType,jdbcType=VARCHAR}
       </if>
 
     </select>

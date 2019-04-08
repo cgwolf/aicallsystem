@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel(value="AcsContactInfo对象", description="联系我们信息")
+@ApiModel( description="联系我们信息")
 public class AcsContactInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

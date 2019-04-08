@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel(value="AcsTokenInfo对象", description="令牌表")
+@ApiModel( description="令牌表")
 public class AcsTokenInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

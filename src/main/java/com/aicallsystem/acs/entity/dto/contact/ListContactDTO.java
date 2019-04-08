@@ -1,6 +1,7 @@
 package com.aicallsystem.acs.entity.dto.contact;
 
 import com.aicallsystem.acs.entity.AcsContactInfo;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @version 1.0.0
  */
 @Data
+@ApiModel(description="查询联系方式返回列表")
 public class ListContactDTO {
 
     @ApiModelProperty("联系方式列表")

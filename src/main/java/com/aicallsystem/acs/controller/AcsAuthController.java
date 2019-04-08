@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 4/3/2019
  * @version 1.0.0
  */
-@Api(tags = "Auth API")
+@Api(tags = "身份验证 API")
 @RestController
 public class AcsAuthController extends BaseController {
 
