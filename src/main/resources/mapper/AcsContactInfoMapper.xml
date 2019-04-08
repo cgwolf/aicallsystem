@@ -24,4 +24,8 @@
       delete from acs_contact_info
       where id=#{id}
     </delete>
+
+    <update id="updateContactState" parameterType="com.aicallsystem.acs.entity.AcsContactInfo">
+        update acs_contact_info set state= "1" where id=#{id}
+    </update>
 </mapper>

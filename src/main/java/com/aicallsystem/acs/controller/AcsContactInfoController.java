@@ -116,6 +116,30 @@ public class AcsContactInfoController extends BaseController {
     }
 
 
+    /**
+     * <p>
+     *      更新联系方式状态
+     * </p>
+     * @param deleteContactVO 联系方式id
+     * @since 4/3/2019
+     */
+    @PostMapping("/updateContactState")
+    @ApiOperation("更新联系方式状态")
+    public ResultBean updateContactState(@RequestBody DeleteContactVO deleteContactVO){
+
+        AcsContactInfo acsContactInfo = new AcsContactInfo();
+        try{
+            copyProperties(deleteContactVO,acsContactInfo);
+            iAcsContactInfoService.updateContactState(acsContactInfo);
+        }catch (Exception e){
+            e.printStackTrace();
+            return failResponse(new SysException(SysExceptionEnum.DELETE_CONTACT_ERROR));
+        }
+
+        return successResponse("","更新联系方式状态成功");
+    }
+
+
 
 
 

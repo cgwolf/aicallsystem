@@ -20,4 +20,6 @@ public interface AcsContactInfoMapper extends BaseMapper<AcsContactInfo> {
     void addContact(AcsContactInfo acsContactInfo);
 
     void deleteContact(AcsContactInfo acsContactInfo);
+
+    void updateContactState(AcsContactInfo acsContactInfo);
 }
