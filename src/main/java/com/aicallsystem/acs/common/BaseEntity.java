@@ -1,7 +1,11 @@
 package com.aicallsystem.acs.common;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 
 /**
@@ -19,4 +23,9 @@ public class BaseEntity {
 
     @TableId
     private int id;
+
+    @TableId
+    @ApiModelProperty(value = "创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createDate;
 }

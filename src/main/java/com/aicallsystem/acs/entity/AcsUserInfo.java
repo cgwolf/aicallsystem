@@ -9,33 +9,40 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 联系我们信息
+ * 用户表
  * </p>
  *
  * @author ispong
- * @since 2019-04-03
+ * @since 2019-04-09
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel( description="联系我们信息")
-public class AcsContactInfo extends BaseEntity {
+@ApiModel(value="AcsUserInfo对象", description="用户表")
+public class AcsUserInfo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "客户姓名")
+    @ApiModelProperty(value = "用户姓名")
     private String name;
 
-    @ApiModelProperty(value = "客户电话")
+    @ApiModelProperty(value = "用户性别")
+    private String sex;
+
+    @ApiModelProperty(value = "用户手机号")
     private String phone;
 
-    @ApiModelProperty(value = "客户邮箱")
-    private String email;
+    @ApiModelProperty(value = "其他手机号")
+    private String otherPhone;
+
+    @ApiModelProperty(value = "用户公司")
+    private String company;
 
     @ApiModelProperty(value = "备注")
     private String remark;
 
-    @ApiModelProperty(value = "客户信息状态")
-    private Integer state;
+    @ApiModelProperty(value = "用户uuid")
+    private String userUuid;
+
 
 }

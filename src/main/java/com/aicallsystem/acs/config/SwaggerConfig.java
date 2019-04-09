@@ -110,14 +110,14 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 //                .securitySchemes(newArrayList(apiKey()))
 //                .securityContexts(newArrayList(securityContext()))
 //                .enableUrlTemplating(true)
-//                .globalOperationParameters(
-//                        newArrayList(new ParameterBuilder()
-//                                .name("someGlobalParameter")
-//                                .description("Description of someGlobalParameter")
-//                                .modelRef(new ModelRef("string"))
-//                                .parameterType("query")
-//                                .required(true)
-//                                .build()))
+                .globalOperationParameters(
+                        newArrayList(new ParameterBuilder()
+                                .name("token")
+                                .description("验证令牌")
+                                .modelRef(new ModelRef("string"))
+                                .parameterType("header")
+                                .required(false)
+                                .build()))
 //                .tags(new Tag("Pet Service", "All apis relating to pets"))
 //                .additionalModels(typeResolver.resolve(AdditionalModel.class))
                 ;

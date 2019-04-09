@@ -28,5 +28,9 @@ public interface AcsTokenInfoMapper extends BaseMapper<AcsTokenInfo> {
      * @throws
      * @since 4/4/2019
      */
-    void invalidToken(AcsAccountInfo acsAccountInfo);
+    void invalidToken(AcsTokenInfo acsTokenInfo);
+
+    void addToken(AcsTokenInfo acsTokenInfo);
+
+    AcsAccountInfo verifyToken(AcsTokenInfo acsTokenInfo);
 }

@@ -16,6 +16,21 @@ import lombok.Setter;
 public enum SysExceptionEnum {
 
     /**
+     *  token失效
+     */
+    TOKEN_ERROR("token失效"),
+
+    /**
+     *  创建用户账号失败
+     */
+    CREATE_ACCOUNT_ERROR("创建用户账号失败"),
+
+    /**
+     *  生成Token失败
+     */
+    GENERATOR_TOKEN_ERROR("生成Token失败"),
+
+    /**
      *  删除联系方式失败
      */
     DELETE_CONTACT_ERROR("删除联系方式失败"),

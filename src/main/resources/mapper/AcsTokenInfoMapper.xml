@@ -2,12 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aicallsystem.acs.mapper.AcsTokenInfoMapper">
 
-    <delete id="invalidToken" parameterType="com.aicallsystem.acs.entity.AcsAccountInfo">
-
+    <delete id="invalidToken" parameterType="com.aicallsystem.acs.entity.AcsTokenInfo">
         delete from acs_token_info
         where
-          account = #{userName}
+          user_uuid = #{userUuid}
 
     </delete>
 
+    <insert id="addToken" parameterType="com.aicallsystem.acs.entity.AcsTokenInfo">
+        insert into acs_token_info(token,user_uuid)
+        values (#{token},#{userUuid})
+
+    </insert>
+
+    <select id="verifyToken" parameterType="com.aicallsystem.acs.entity.AcsTokenInfo" resultType="com.aicallsystem.acs.entity.AcsAccountInfo">
+        select user_uuid userUuid
+        from acs_token_info
+        where token=#{token}
+    </select>
 </mapper>

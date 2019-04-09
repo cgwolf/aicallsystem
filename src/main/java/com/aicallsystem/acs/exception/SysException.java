@@ -1,6 +1,7 @@
 package com.aicallsystem.acs.exception;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>

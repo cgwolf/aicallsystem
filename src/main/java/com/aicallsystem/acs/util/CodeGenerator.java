@@ -126,7 +126,8 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setSuperControllerClass("com.aicallsystem.acs.common.BaseController");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
-        strategy.setSuperEntityColumns("id");
+        String[] entity={"id","create_date"};
+        strategy.setSuperEntityColumns(entity);
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);

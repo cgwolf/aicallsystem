@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aicallsystem.acs.mapper.AcsAccountInfoMapper">
+
+
+    <select id="getPassword" parameterType="com.aicallsystem.acs.entity.AcsAccountInfo" resultType="com.aicallsystem.acs.entity.AcsAccountInfo">
+
+      select
+        password password,
+        user_uuid userUuid
+      from acs_account_info
+      where account=#{account}
+    </select>
+
+    <insert id="addAccountInfo" parameterType="com.aicallsystem.acs.entity.AcsAccountInfo">
+
+        insert into acs_account_info(user_uuid,account,password)
+        values (#{userUuid},#{account},#{password})
+    </insert>
+</mapper>

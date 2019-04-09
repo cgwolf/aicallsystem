@@ -2,7 +2,9 @@ package com.aicallsystem.acs.service;
 
 import com.aicallsystem.acs.entity.AcsAccountInfo;
 import com.aicallsystem.acs.entity.AcsTokenInfo;
+import com.aicallsystem.acs.entity.dto.token.MarkTokenDto;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -23,6 +25,8 @@ public interface IAcsTokenInfoService extends IService<AcsTokenInfo> {
      * @throws
      * @since 4/4/2019
      */
-    String tokenGenerator(AcsAccountInfo acsAccountInfo);
+    MarkTokenDto tokenGenerator(AcsAccountInfo acsAccountInfo);
+
+    AcsAccountInfo verifyToken(AcsTokenInfo acsTokenInfo);
 
 }
