@@ -33,7 +33,10 @@ public class CorsConfig {
         configuration.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-        return new FilterRegistrationBean(new CorsFilter(source));
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new CorsFilter(source));
+        filterRegistrationBean.setOrder(0);
+        return filterRegistrationBean;
+
     }
 
 }

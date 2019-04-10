@@ -18,11 +18,14 @@ public class FilterConfig {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(tokenFilter);
         String[] filterPath = {
-                "/contact/*",
+                "/contact/deleteContact",
+                "/contact/listContact",
+                "/contact/updateContactState",
                 "/test/*"
         };
         registration.addUrlPatterns(filterPath);
         registration.setName("TokenFilter");
+        registration.setOrder(1);
         return registration;
     }
 
