@@ -1,9 +1,13 @@
 package com.aicallsystem.acs.mapper;
 
 import com.aicallsystem.acs.entity.AcsPermissionInfo;
+import com.aicallsystem.acs.entity.AcsUserInfo;
+import com.aicallsystem.acs.entity.dto.user.MarkUserDto;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +21,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface AcsPermissionInfoMapper extends BaseMapper<AcsPermissionInfo> {
 
+    List<AcsPermissionInfo> getPermission(AcsUserInfo acsUserInfo);
 }
+

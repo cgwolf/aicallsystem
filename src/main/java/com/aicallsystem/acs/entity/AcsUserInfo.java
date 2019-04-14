@@ -44,5 +44,7 @@ public class AcsUserInfo extends BaseEntity {
     @ApiModelProperty(value = "用户uuid")
     private String userUuid;
 
+    @ApiModelProperty(value = "角色类型")
+    private String roleType;
 
 }

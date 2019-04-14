@@ -16,6 +16,11 @@ import lombok.Setter;
 public enum SysExceptionEnum {
 
     /**
+     *  权限获取失败
+     */
+    GET_PERMISSION_ERROR("权限获取失败"),
+
+    /**
      *  token失效
      */
     TOKEN_ERROR("token失效"),

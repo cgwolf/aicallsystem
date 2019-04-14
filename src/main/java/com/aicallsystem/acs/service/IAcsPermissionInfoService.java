@@ -1,6 +1,8 @@
 package com.aicallsystem.acs.service;
 
 import com.aicallsystem.acs.entity.AcsPermissionInfo;
+import com.aicallsystem.acs.entity.dto.permission.GetPermissionDTO;
+import com.aicallsystem.acs.entity.dto.user.MarkUserDto;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IAcsPermissionInfoService extends IService<AcsPermissionInfo> {
 
+    GetPermissionDTO getPermission(MarkUserDto markUserDto);
 }

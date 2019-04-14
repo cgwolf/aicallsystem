@@ -23,8 +23,8 @@ public class AcsPermissionRelation extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "用户UUID")
-    private Integer userUuid;
+    @ApiModelProperty(value = "角色类型")
+    private String roleType;
 
     @ApiModelProperty(value = "权限id")
     private Integer permissionId;

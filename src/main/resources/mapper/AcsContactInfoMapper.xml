@@ -37,7 +37,7 @@
       from acs_contact_info
       <if test="orderValue != null and orderValue !=''
                 or orderType !=null and orderType !=''">
-        order by ${orderValue,jdbcType=VARCHAR} ${orderType,jdbcType=VARCHAR}
+        order by ${orderValue} ${orderType}
       </if>
 
     </select>
