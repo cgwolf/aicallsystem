@@ -23,7 +23,7 @@ public enum SysExceptionEnum {
     /**
      *  token失效
      */
-    TOKEN_ERROR("token失效"),
+    TOKEN_ERROR("请重新登录！"),
 
     /**
      *  创建用户账号失败
