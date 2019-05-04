@@ -1,7 +1,13 @@
 package com.aicallsystem.acs.service;
 
 import com.aicallsystem.acs.entity.AcsConsumerInfo;
+import com.aicallsystem.acs.entity.dto.consumer.AddConsumerDTO;
+import com.aicallsystem.acs.entity.dto.consumer.ConsConditionDTO;
+import com.aicallsystem.acs.entity.dto.consumer.ListConsumerInfoDTO;
+import com.aicallsystem.acs.entity.dto.user.MarkUserDto;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +19,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IAcsConsumerInfoService extends IService<AcsConsumerInfo> {
 
+    List<ListConsumerInfoDTO> listConsumer(ConsConditionDTO consConditionDTO, MarkUserDto markUserDto);
+
+    void addConsumer(AddConsumerDTO addConsumerDTO,MarkUserDto markUserDto);
+
+    void addConsumerList(List<AcsConsumerInfo> consumerInfos);
 }

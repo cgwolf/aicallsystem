@@ -2,4 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aicallsystem.acs.mapper.AcsConsumerInfoMapper">
 
+    <insert id="addConsumer" parameterType="com.aicallsystem.acs.entity.AcsConsumerInfo">
+
+        insert into acs_consumer_info(
+            name,
+            company,
+            phone,
+            sex,
+            rank_string,
+            batch,
+            remark,
+            user_uuid
+        )
+        values (
+            #{name},
+            #{company},
+            #{phone},
+            #{sex},
+            #{rankString},
+            #{batch},
+            #{remark},
+            #{userUuid}
+        )
+
+    </insert>
 </mapper>

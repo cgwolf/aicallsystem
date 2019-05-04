@@ -16,6 +16,11 @@ import lombok.Setter;
 public enum SysExceptionEnum {
 
     /**
+     *  数据操作失败
+     */
+    DAO_ERROR("数据操作失败"),
+
+    /**
      *  客户信息导入失败
      */
     UPLOAD_CONSUMER_ERROR("客户信息导入失败"),

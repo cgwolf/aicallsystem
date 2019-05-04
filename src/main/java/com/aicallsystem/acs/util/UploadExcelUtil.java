@@ -47,9 +47,9 @@ public class UploadExcelUtil {
 
                 acsConsumerInfo.setName(String.valueOf(row.getCell(0)));
                 acsConsumerInfo.setCompany(String.valueOf(row.getCell(1)));
-                acsConsumerInfo.setPhone(String.valueOf(row.getCell(2)));
+                acsConsumerInfo.setPhone(String.valueOf(row.getCell(2)).replace(".0",""));
                 acsConsumerInfo.setSex(String.valueOf(row.getCell(3)));
-                acsConsumerInfo.setTypeString(String.valueOf(row.getCell(4)));
+                acsConsumerInfo.setRankString(String.valueOf(row.getCell(4)));
                 acsConsumerInfo.setRemark(String.valueOf(row.getCell(5)));
                 acsConsumerInfo.setUserUuid(markUserDto.getUserUuid());
                 acsConsumerInfo.setBatch(batch);

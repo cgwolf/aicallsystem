@@ -45,8 +45,11 @@ public class AcsConsumerInfo extends BaseEntity {
     @ApiModelProperty(value = "隶属")
     private String part;
 
-    @ApiModelProperty(value = "客户导入类型")
-    private String typeString;
+    @ApiModelProperty(value = "客户意向等级")
+    private String rankString;
+
+    @ApiModelProperty(value = "通话状态")
+    private String stateString;
 
     @ApiModelProperty(value = "跟进内容")
     private String updateContent;
@@ -59,5 +62,11 @@ public class AcsConsumerInfo extends BaseEntity {
 
     @ApiModelProperty(value = "用户的uuid")
     private String userUuid;
+
+    @ApiModelProperty(value = "通话时长")
+    private Integer callTime;
+
+    @ApiModelProperty(value = "通话次数")
+    private Integer callNum;
 
 }
