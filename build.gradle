@@ -48,4 +48,11 @@ dependencies {
 	// pagehelper-spring-boot-starter
 	compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
 
+	// poi
+	compile group: 'org.apache.poi', name: 'poi', version: '4.1.0'
+
+	// poi-ooxml
+	compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
+
+
 }
