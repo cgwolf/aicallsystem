@@ -16,6 +16,11 @@ import lombok.Setter;
 public enum SysExceptionEnum {
 
     /**
+     *  客户信息导入失败
+     */
+    UPLOAD_CONSUMER_ERROR("客户信息导入失败"),
+
+    /**
      *  权限获取失败
      */
     GET_PERMISSION_ERROR("权限获取失败"),

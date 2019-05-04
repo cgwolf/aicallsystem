@@ -21,7 +21,8 @@ public class FilterConfig {
                 "/contact/deleteContact",
                 "/contact/listContact",
                 "/contact/updateContactState",
-                "/permission/*"
+                "/permission/*",
+                "/consumer/*"
         };
         registration.addUrlPatterns(filterPath);
         registration.setName("TokenFilter");
