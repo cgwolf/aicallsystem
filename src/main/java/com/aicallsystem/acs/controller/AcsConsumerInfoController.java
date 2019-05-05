@@ -4,6 +4,7 @@ import com.aicallsystem.acs.common.ResultBean;
 import com.aicallsystem.acs.entity.AcsConsumerInfo;
 import com.aicallsystem.acs.entity.dto.consumer.AddConsumerDTO;
 import com.aicallsystem.acs.entity.dto.consumer.ConsConditionDTO;
+import com.aicallsystem.acs.entity.dto.consumer.DeleteConsumerDTO;
 import com.aicallsystem.acs.entity.dto.consumer.ListConsumerInfoDTO;
 import com.aicallsystem.acs.exception.SysException;
 import com.aicallsystem.acs.service.IAcsConsumerInfoService;
@@ -38,15 +39,28 @@ public class AcsConsumerInfoController extends BaseController {
     @PostMapping("listConsumer")
     public ResultBean<ListConsumerInfoDTO> listConsumer(@RequestBody ConsConditionDTO consConditionDTO){
 
+        try {
 
-        return null;
+            List<ListConsumerInfoDTO> listConsumer = iAcsConsumerInfoService.listConsumer(consConditionDTO, getUserMark());
+            return successResponse(listConsumer, "查询成功");
+        }catch (SysException e){
+
+            return failResponse(e);
+        }
+
     }
 
     @ApiOperation(value = "客户信息删除接口")
     @PostMapping("deleteConsumer")
-    public ResultBean deleteConsumer(){
-        // 每个用户都有自己的不同的客户，通过token获取用户的uuid
-        return null;
+    public ResultBean deleteConsumer(@RequestBody DeleteConsumerDTO deleteConsumerDTO){
+
+        try {
+            iAcsConsumerInfoService.deleteConsumer(deleteConsumerDTO,getUserMark());
+            return successResponse("", "删除成功");
+        }catch (SysException e){
+            return failResponse(e);
+        }
+
     }
 
     @ApiOperation(value = "客户信息添加接口")

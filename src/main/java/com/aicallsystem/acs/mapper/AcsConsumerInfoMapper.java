@@ -43,5 +43,7 @@ public interface AcsConsumerInfoMapper extends BaseMapper<AcsConsumerInfo> {
      * @since 5/4/2019
      */
     void addConsumer(AcsConsumerInfo acsConsumerInfo);
+
+    void deleteConsumer(@Param("userUuid") String userUuid,@Param("id") Integer id);
 }
 

@@ -3,6 +3,7 @@ package com.aicallsystem.acs.service.impl;
 import com.aicallsystem.acs.entity.AcsConsumerInfo;
 import com.aicallsystem.acs.entity.dto.consumer.AddConsumerDTO;
 import com.aicallsystem.acs.entity.dto.consumer.ConsConditionDTO;
+import com.aicallsystem.acs.entity.dto.consumer.DeleteConsumerDTO;
 import com.aicallsystem.acs.entity.dto.consumer.ListConsumerInfoDTO;
 import com.aicallsystem.acs.entity.dto.user.MarkUserDto;
 import com.aicallsystem.acs.exception.SysException;
@@ -12,7 +13,6 @@ import com.aicallsystem.acs.service.IAcsConsumerInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,6 +36,7 @@ public class AcsConsumerInfoServiceImpl extends ServiceImpl<AcsConsumerInfoMappe
     public List<ListConsumerInfoDTO> listConsumer(ConsConditionDTO consConditionDTO, MarkUserDto markUserDto) {
 
         List<ListConsumerInfoDTO> listConsumer = acsConsumerInfoMapper.listConsumer(markUserDto.getUserUuid(),consConditionDTO);
+
         return listConsumer;
     }
 
@@ -57,8 +58,19 @@ public class AcsConsumerInfoServiceImpl extends ServiceImpl<AcsConsumerInfoMappe
     public void addConsumerList(List<AcsConsumerInfo> consumerInfos) {
 
         for(AcsConsumerInfo consumerInfo:consumerInfos){
-
             acsConsumerInfoMapper.addConsumer(consumerInfo);
+        }
+
+    }
+
+    @Override
+    public void deleteConsumer(DeleteConsumerDTO deleteConsumerDTO, MarkUserDto markUserDto) {
+
+
+        List<Integer> consumerList = deleteConsumerDTO.getConsumerList();
+
+        for(Integer consumerId :consumerList){
+            acsConsumerInfoMapper.deleteConsumer(markUserDto.getUserUuid(),consumerId);
         }
 
     }

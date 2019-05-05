@@ -1,5 +1,6 @@
 package com.aicallsystem.acs.entity.dto.consumer;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -47,8 +48,10 @@ public class ListConsumerInfoDTO {
     private String batch;
 
     @ApiModelProperty(value = "创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:ss")
     private LocalDateTime createDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:ss")
     @ApiModelProperty(value = "最后跟进时间")
     private LocalDateTime updateDate;
 

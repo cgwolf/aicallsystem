@@ -26,4 +26,45 @@
         )
 
     </insert>
+
+    <select id="listConsumer" resultType="com.aicallsystem.acs.entity.dto.consumer.ListConsumerInfoDTO">
+
+        select
+            id id,
+            name name,
+            sex sex,
+            phone phone,
+            state_string stateString,
+            rank_string rankString,
+            call_time callTime,
+            call_num callNum,
+            remark remark,
+            batch batch,
+            create_date createDate,
+            update_date updateDate
+        from acs_consumer_info
+        where
+            user_uuid = #{userUuid}
+        <if test="consCondition.rank != null and consCondition.rank.size > 0 ">
+        and
+            rank_string in
+            <foreach collection="consCondition.rank" item="rank" open="(" separator="," close=")">
+                #{rank}
+            </foreach>
+        </if>
+
+        <if test="consCondition.state != null and consCondition.state.size > 0 ">
+        and
+            rank_string in
+            <foreach collection="consCondition.state" item="state" open="(" separator="," close=")">
+                #{state}
+            </foreach>
+        </if>
+
+    </select>
+
+    <delete id="deleteConsumer" >
+
+        delete from acs_consumer_info where user_uuid=#{userUuid} and id=#{id}
+    </delete>
 </mapper>
