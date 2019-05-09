@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 
 /**
  * <p>
@@ -60,15 +61,17 @@ public class AcsVoiceController extends BaseController {
      */
     @ApiOperation(value = "下载音频文件接口")
     @GetMapping("downloadVoice")
-    public ResultBean downloadVoice(@RequestParam(value = "fileName") String fileName,HttpServletResponse response){
+    public ResultBean downloadVoice(HttpServletResponse response){
 
         try {
 
-            File file = new File("/mnt/" + fileName);
+            File file = new File("/mnt/" + "test.m4a");
             FileInputStream inputStream = new FileInputStream(file);
 
             ServletOutputStream outputStream = response.getOutputStream();
+
             response.setContentType("video/mpeg4");
+            response.setHeader("Content-Disposition", "attachment;filename="+ "test.m4a");
 
             byte[] buffer = new byte[1024];
             int len;
