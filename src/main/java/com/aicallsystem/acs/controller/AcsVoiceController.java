@@ -125,7 +125,7 @@ public class AcsVoiceController extends BaseController {
             return successResponse(EntityUtils.toString(response.getEntity()),"翻译成功!");
         } catch (Exception e) {
 
-            return failResponse(new SysException(SysExceptionEnum.AUTH_ERROR));
+            return successResponse(e,"翻译失败!");
         }
 
     }
