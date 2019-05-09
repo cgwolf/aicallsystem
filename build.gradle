@@ -54,5 +54,14 @@ dependencies {
 	// poi-ooxml
 	compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
 
+	// fastjson
+	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.58'
+
+	// httpclient
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.8'
+
+	// httpmime
+	compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.8'
+
 
 }

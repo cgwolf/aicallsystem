@@ -7,15 +7,21 @@ import com.aicallsystem.acs.exception.SysExceptionEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.http.client.support.AsyncHttpAccessor;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLEncoder;
+import static com.aicallsystem.acs.util.VoiceFileUtil.appendAuthParams;
 
 /**
  * <p>
@@ -83,5 +89,44 @@ public class AcsVoiceController extends BaseController {
 
             return failResponse(new SysException(SysExceptionEnum.AUTH_ERROR));
         }
+    }
+
+    /**
+     * <p>
+     *     语音识别
+     * </p>
+     * @param
+     * @return
+     * @throws
+     * @since 5/9/2019
+     */
+    @ApiOperation(value = "语音识别")
+    @GetMapping("translateVoice")
+    public ResultBean translateVoice(){
+
+        String fileName = "test.m4a";
+        String requestData = "";
+
+        // 调用工具类,生成路径参数
+        String url = appendAuthParams();
+
+        // 创建httpClient对象
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        HttpPost httpPost = new HttpPost(url);
+        HttpEntity entity = MultipartEntityBuilder.create()
+                .addBinaryBody("file", new File("/mnt/" + fileName), ContentType.create("application/octet-stream"), fileName)
+                .addTextBody("params", requestData)
+                .build();
+        httpPost.setEntity(entity);
+
+        try {
+
+            HttpResponse response = httpClient.execute(httpPost);
+            return successResponse(EntityUtils.toString(response.getEntity()),"翻译成功!");
+        } catch (Exception e) {
+
+            return failResponse(new SysException(SysExceptionEnum.AUTH_ERROR));
+        }
+
     }
 }
