@@ -104,8 +104,33 @@ public class AcsVoiceController extends BaseController {
     @GetMapping("translateVoice")
     public ResultBean translateVoice(){
 
-        String fileName = "test.m4a";
-        String requestData = "";
+        String fileName = "test.wav";
+        String requestData = "{\n" +
+                "    \"context\": {\n" +
+                "        \"productId\": \"278581694\",\n" +
+                "        \"userId\": \"\",   \n" +
+                "        \"deviceName\": \"\",\n" +
+                "        \"sdkName\": \"\" \n" +
+                "    },\n" +
+                "    \"request\": {\n" +
+                "        \"requestId\": \"1234567890\",\n" +
+                "        \"audio\": {\n" +
+                "            \"audioType\": \"wav\", \n" +
+                "            \"sampleRate\": 16000, \n" +
+                "            \"channel\": 1, \n" +
+                "            \"sampleBytes\": 2 \n" +
+                "                    },\n" +
+                "        \"asr\": {\n" +
+                "            \"wakeupWord\": \"\", \n" +
+                "            \"enableRealTimeFeedback\": true,\n" +
+                "            \"enableVAD\": true, \n" +
+                "            \"enablePunctuation\": true,\n" +
+                "            \"language\": \"zh-CN\", \n" +
+                "            \"res\": \"comm\", \n" +
+                "            \"lmId\": \"\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
 
         // 调用工具类,生成路径参数
         String url = appendAuthParams();

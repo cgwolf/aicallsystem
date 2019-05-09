@@ -40,10 +40,9 @@ public class VoiceFileUtil {
                 .append("&apikey=")
                 .append("4a1082a3b0ea427b8fbffc01494d20bd");
 
-        System.out.println("Url: " + url.toString());
-
         return url.toString();
     }
+
 
     /**
      * <p>
