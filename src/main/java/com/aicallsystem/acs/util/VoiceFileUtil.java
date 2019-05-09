@@ -33,7 +33,7 @@ public class VoiceFileUtil {
     public static String appendAuthParams() {
 
         StringBuilder url = new StringBuilder();
-        url.append("http://asr.dui.ai/runtime/v2/recognize").append("recognize?");
+        url.append("http://asr.dui.ai/runtime/v2/").append("recognize?");
 
         url.append("productId=")
                 .append("278581694")
