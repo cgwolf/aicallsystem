@@ -1,7 +1,7 @@
 package com.aicallsystem.acs.exception;
 
 import lombok.Data;
-import org.springframework.stereotype.Component;
+import lombok.EqualsAndHashCode;
 
 /**
  * <p>
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class SysException extends RuntimeException{
 
     private final String description;
