@@ -104,7 +104,8 @@ public class AcsVoiceController extends BaseController {
     @GetMapping("translateVoice")
     public ResultBean translateVoice(){
 
-        String fileName = "test.wav";
+        String fileName = "asrtest.wav";
+
         String requestData = "{\n" +
                 "    \"context\": {\n" +
                 "        \"productId\": \"278581694\",\n" +
