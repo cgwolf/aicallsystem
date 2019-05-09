@@ -68,6 +68,7 @@ public class AcsVoiceController extends BaseController {
             FileInputStream inputStream = new FileInputStream(file);
 
             ServletOutputStream outputStream = response.getOutputStream();
+            response.setContentType("video/mpeg4");
 
             byte[] buffer = new byte[1024];
             int len;
