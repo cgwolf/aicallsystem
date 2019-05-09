@@ -71,13 +71,13 @@ public class AcsVoiceController extends BaseController {
 
         try {
 
-            File file = new File("/mnt/" + "test.m4a");
+            File file = new File("/mnt/" + "test.wav");
             FileInputStream inputStream = new FileInputStream(file);
 
             ServletOutputStream outputStream = response.getOutputStream();
 
             response.setContentType("video/mpeg4");
-            response.setHeader("Content-Disposition", "attachment;filename="+ "test.m4a");
+            response.setHeader("Content-Disposition", "attachment;filename="+ "test.wav");
 
             byte[] buffer = new byte[1024];
             int len;
